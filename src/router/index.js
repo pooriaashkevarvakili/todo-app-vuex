@@ -1,11 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'tasks',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/TaskView.vue')
+    }
   },
   {
     path: '/about',
@@ -16,7 +17,8 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
     }
-  }
+  },
+
 ]
 
 const router = createRouter({
